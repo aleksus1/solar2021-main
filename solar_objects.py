@@ -24,10 +24,10 @@ class Star(DrawableObject):
         self.Vy = 0
         """Скорость по оси **y**"""
 
-        self.Fx = 0
+        self.ax = 0
         """Сила по оси **x**"""
 
-        self.Fy = 0
+        self.ay = 0
         """Сила по оси **y**"""
 
         self.R = 5
@@ -73,10 +73,10 @@ class Planet(DrawableObject):
         self.Vy = 0
         """Скорость по оси **y**"""
 
-        self.Fx = 0
+        self.ax = 0
         """Сила по оси **x**"""
 
-        self.Fy = 0
+        self.ay = 0
         """Сила по оси **y**"""
 
         self.R = 5

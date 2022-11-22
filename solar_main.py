@@ -68,9 +68,9 @@ def open_file():
     global model_time
 
     model_time = 0.0
-    in_filename = "solar_system.txt"
+    in_filename = "one_satellite.txt"
     space_objects = read_space_objects_data_from_file(in_filename)
-    max_distance = max([max(abs(obj.x), abs(obj.y)) for obj in space_objects])
+    max_distance = max([max(abs(obj.x), abs(obj.y), 1) for obj in space_objects])
     calculate_scale_factor(max_distance)
 
 def handle_events(events, menu):
@@ -81,7 +81,7 @@ def handle_events(events, menu):
             alive = False
 
 def slider_to_real(val):
-    return np.exp(5 + val)
+    return 100*(5 + val)
 
 def slider_reaction(event):
     global time_scale
@@ -89,7 +89,7 @@ def slider_reaction(event):
 
 def init_ui(screen):
     global browser
-    slider = thorpy.SliderX(100, (-10, 10), "Simulation speed")
+    slider = thorpy.SliderX(300, (0, 1300), "Simulation speed")
     slider.user_func = slider_reaction
     button_stop = thorpy.make_button("Quit", func=stop_execution)
     button_pause = thorpy.make_button("Pause", func=pause_execution)
@@ -158,11 +158,9 @@ def main():
 
         last_time = cur_time
         drawer.update(space_objects, box)
-        time.sleep(1.0 / 60)
+        time.sleep(1.0 / 240)
 
     print('Modelling finished!')
 
 if __name__ == "__main__":
     main()
-print(read_space_objects_data_from_file("double_star.txt"))
-print(space_objects)
